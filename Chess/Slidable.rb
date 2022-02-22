@@ -34,8 +34,8 @@ module Slidable
     elsif dir == "both" 
       both = DIAGONAL_DIRS + HORIZONTAL_DIRS
       both.each do |subb_arr|
-          subb_arr[0] = dx
-          subb_arr[1] = dy
+          dx =  subb_arr[0]
+          dy = subb_arr[1]
           arr += grow_unblocked_moves_in_dir(dx,dy)
         end 
     end 
@@ -50,7 +50,6 @@ module Slidable
   # pass in first direction[1,0] into grow_unblocked_moves_in_dir(dx,dy)
 
     
-  end 
 
 
 
@@ -66,4 +65,6 @@ module Slidable
     end 
     return moves
   end 
+
+
 end 

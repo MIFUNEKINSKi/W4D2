@@ -5,7 +5,7 @@ module Stepable
     temp_x = pos[0] 
     temp_y = pos[1]
 
-    if dir == knight 
+    if dir == "knight" 
       possible_moves = [
         [2,1],
         [2,-1],
@@ -23,7 +23,7 @@ module Stepable
         return_arr << [temp_x + dx, temp_y + dy] if valid_pos?([temp_x + dx, temp_y + dy)
       end 
 
-    else 
+    elsif dir == "king" 
 
       possible_moves = [
         [1,1]

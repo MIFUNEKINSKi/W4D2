@@ -1,5 +1,6 @@
 require_relative "piece"
 require_relative "board"
+require_relative "Slidable"
 
 class Rook < Piece
 include Slidable

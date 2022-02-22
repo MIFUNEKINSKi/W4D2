@@ -1,19 +1,18 @@
-require_relative "Pieces/piece.rb"
-require_relative "Pieces/null_pieces.rb"
+require_relative "piece.rb"
 require "byebug"
 class Board
   def initialize
     @grid = Array.new(8) {Array.new(8, nil)}
-    (0..1).each do |row|
-      @grid[row].each.with_index do |el,col|
-        @grid[row][col] = Piece.new
-      end 
-    end 
-    (6..7).each do |row|
-      @grid[row].each.with_index do |ele,col|
-        @grid[row][col] = Piece.new
-      end 
-    end 
+    # (0..1).each do |row|
+    #   @grid[row].each.with_index do |el,col|
+    #     @grid[row][col] = Piece.new()
+    #   end 
+    # end 
+    # (6..7).each do |row|
+    #   @grid[row].each.with_index do |ele,col|
+    #     @grid[row][col] = Piece.new
+    #   end 
+    # end 
   end
   attr_accessor :grid
   def [](pos)
@@ -26,7 +25,7 @@ class Board
     grid[x][y] = piece
   end
 
-  
+
 
   def move_piece(start_pos,end_pos)
     # debugger
