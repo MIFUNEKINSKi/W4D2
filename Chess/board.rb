@@ -16,26 +16,30 @@ class Board
     end 
   end
   attr_accessor :grid
-  # def [](pos)
-  #   x,y = pos
-  #   grid[x][y]
-  # end
+  def [](pos)
+    x,y = pos
+    grid[x][y]
+  end
 
-  # def []=(piece,pos)
-  #   x,y = pos
-  #   grid[x][y] = piece
-  # end
+  def []=(pos,piece)
+    x,y = pos
+    grid[x][y] = piece
+  end
+
+  
 
   def move_piece(start_pos,end_pos)
     # debugger
-    if start_pos == nil && end_pos[0] > 7 && end_pos[0] < 0
-      raise "You can't place there"
+    if self[start_pos] == nil
+      raise "WRONG POSITION"
+    elsif end_pos[0] > 7 || end_pos[0] < 0
+      raise "WRONG POSITION"
+    elsif end_pos[1] > 7 || end_pos[1] < 0
+      raise "WRONG POSITION"
     else
-      grid[start_pos[0]][start_pos[1]] != nil
-      temp = grid[start_pos[0]][start_pos[1]]
-      grid[start_pos[0]][start_pos[1]] = nil
-      grid[end_pos[0]][end_pos[1]] = temp
-     
+      temp = self[start_pos]
+      self[start_pos] = nil
+      self[end_pos] = temp 
     end
   end
 
@@ -47,7 +51,3 @@ class Board
   end 
  
 end 
-
-a = Board.new
-a.move_piece([0,0],[5,5])
-a.board_print
