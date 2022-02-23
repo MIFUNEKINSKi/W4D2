@@ -5,8 +5,14 @@ require_relative "Slidable"
 class Queen < Piece
 include Slidable
   def initialize(color,board,pos)
-      super 
-    end 
+    super
+    if @color == "white" 
+      @symbol = " ♕"
+    else 
+      @symbol = " ♛"
+    end
+  end
+   
 
   def move_dirs
     both = HORIZONTAL_DIRS+DIAGONAL_DIRS

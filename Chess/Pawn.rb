@@ -5,6 +5,11 @@ require_relative "board"
 class Pawn < Piece
   def initialize(color,board,pos)
     super 
+    if @color == "white"
+      @symbol = " ♙"
+    else
+      @symbol = " ♟"
+    end
   end
 
   def moves

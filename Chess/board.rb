@@ -1,5 +1,8 @@
 require_relative "pieces.rb"
 require "byebug"
+require "colorize"
+
+
 class Board
   # null_p = NullPiece.instance
 
@@ -52,6 +55,12 @@ class Board
     grid[x][y] = piece
   end
 
+  def dup
+    new_board = Board.new
+    new_board.grid = @grid.map{ |row| row.map {|el| el}}
+    return new_board
+
+  end
 
 
 
@@ -84,8 +93,23 @@ class Board
 
   def board_print
     # debugger
-    grid.each do |row|
-      p row 
+    grid.each.with_index do |row, i|
+      row.each.with_index do |ele,j|
+        if (i.even? && j.even?) || (i.odd? && j.odd?)
+          print @grid[i][j].to_s.colorize(:color => :yellow, :background => :red)+" ".colorize( :background => :red)
+        else
+          print @grid[i][j].to_s.colorize(:color => :yellow, :background => :orange)+" ".colorize( :background => :orange)
+        end
+      end
+      print "\n"
+    end 
+  end 
+
+  def king_pos(color)
+    @grid.each do |row|
+      row.each do |piece|
+        return piece.pos if piece.instance_of?(King) && piece.color == color
+      end 
     end 
   end 
  

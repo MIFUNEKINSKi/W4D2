@@ -5,7 +5,13 @@ require_relative "Slidable"
 class Bishop < Piece
 include Slidable
     def initialize(color,board,pos)
-    super 
+    super
+    if @color == "white"
+      @symbol = " ♗"
+    else
+      @symbol = " ♝"
+    end
+
   end 
 
   def move_dirs

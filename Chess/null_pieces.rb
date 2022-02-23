@@ -6,6 +6,6 @@ include Singleton
 
   def initialize
     @color = :none
-    @symbol = ""
+    @symbol = "  "
   end 
 end 

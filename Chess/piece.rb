@@ -5,7 +5,12 @@ attr_reader :color, :board, :pos
     @color = color
     @board = board
     @pos = pos
+    @symbol = "x"
   end 
+
+  def to_s
+    return @symbol
+  end
 
   
 
