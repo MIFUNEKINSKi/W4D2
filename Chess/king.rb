@@ -12,7 +12,7 @@ include Stepable
     end
   end
   attr_reader :symbol
-  def move_diffs
+  def move_dirs
     moves(KING)
   end
 end

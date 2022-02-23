@@ -112,5 +112,34 @@ class Board
       end 
     end 
   end 
+
+ 
+
+  def enemy_pieces(color)
+    final = [] 
+    @grid.each do |row|
+     final += row.select {|ele| ele.color == color}
+    end 
+    final
+  end 
+
+
+   def in_check?(arr,our_color)
+    arr.each do |piece|
+      debugger
+      return true if piece.move_dirs.include?(king_pos(our_color))
+    end 
+    false
+  end 
+
+  def are_we_in_check?(color)
+    if color == "white"
+      return in_check?(enemy_pieces("black"),color)
+    else 
+      return in_check?(enemy_pieces("white"),color)
+    end 
+  end 
+
+
  
 end 

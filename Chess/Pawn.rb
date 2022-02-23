@@ -12,7 +12,7 @@ class Pawn < Piece
     end
   end
 
-  def moves
+  def move_dirs
     valid_moves = []
     if at_start_row? 
       arr = [
