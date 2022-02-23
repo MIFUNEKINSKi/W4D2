@@ -1,11 +1,13 @@
-require_relative "Piece"
+require_relative "piece"
+require_relative "board"
+require_relative "Stepable"
 class King < Piece
-  require Stepable
+include Stepable
   def initialize(color,board, pos)
     super
   end
 
   def move_diffs
-    moves("king")
+    moves(KING)
   end
 end

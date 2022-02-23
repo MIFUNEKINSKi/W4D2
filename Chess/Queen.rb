@@ -1,5 +1,6 @@
 require_relative "piece"
 require_relative "board"
+require_relative "Slidable"
 
 class Queen < Piece
 include Slidable
@@ -8,7 +9,8 @@ include Slidable
     end 
 
   def move_dirs
-    moves("both")
+    both = HORIZONTAL_DIRS+DIAGONAL_DIRS
+    moves(both)
   end 
 
 end 

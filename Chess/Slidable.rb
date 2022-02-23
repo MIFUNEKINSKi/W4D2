@@ -1,3 +1,4 @@
+require "byebug"
 module Slidable
     HORIZONTAL_DIRS = 
     [
@@ -15,31 +16,14 @@ module Slidable
       [-1,1]
     ]
 
-  def moves(dir)
+  def moves(constant_arr)
     arr = []
-    if dir == "horizontal"
-      HORIZONTAL_DIRS.each do |subb_arr|
-        subb_arr[0] = dx
-        subb_arr[1] = dy
-        arr += grow_unblocked_moves_in_dir(dx,dy)
-      end 
-
-    elsif dir == "diagonal"
-       DIAGONAL_DIRS.each do |subb_arr|
-        subb_arr[0] = dx
-        subb_arr[1] = dy
-        arr += grow_unblocked_moves_in_dir(dx,dy)
-      end 
-      
-    elsif dir == "both" 
-      both = DIAGONAL_DIRS + HORIZONTAL_DIRS
-      both.each do |subb_arr|
-          dx =  subb_arr[0]
-          dy = subb_arr[1]
-          arr += grow_unblocked_moves_in_dir(dx,dy)
-        end 
-    end 
-    
+    #debugger
+    constant_arr.each do |subb_arr|
+      dx = subb_arr[0]
+      dy = subb_arr[1]
+      arr += grow_unblocked_moves_in_dir(dx,dy)
+    end
     arr
   end
   # call method move_dirs
@@ -55,14 +39,16 @@ module Slidable
 
   private 
   def grow_unblocked_moves_in_dir(dx,dy)
+    #debugger
     moves = []
     temp_x = pos[0] + dx
     temp_y = pos[1] + dy
-    while board.valid_pos([temp_x,temp_y])
+     
+    while board.valid_pos?([temp_x,temp_y])
       moves << [temp_x,temp_y]
-      temp_x = pos[0] + dx
-      temp_y = pos[1] + dy
-    end 
+      temp_x +=  dx
+      temp_y +=  dy
+    end
     return moves
   end 
 

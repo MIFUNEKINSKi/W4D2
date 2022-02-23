@@ -1,6 +1,7 @@
 require_relative "piece"
 require_relative "board"
 require_relative "Slidable"
+require "byebug"
 
 class Rook < Piece
 include Slidable
@@ -10,7 +11,8 @@ include Slidable
   end 
   
   def move_dirs
-    moves("horizontal")
-  end 
+    moves(HORIZONTAL_DIRS)
+  end
+
 
 end 
